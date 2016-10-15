@@ -7,16 +7,24 @@
   LunchCheckController.$inject=['$scope'];
   function LunchCheckController($scope) {
      $scope.list="";
+     $scope.textBoxClass="";
+     $scope.messageDivClass="";
      $scope.checkTheLunch = function () {
        var itemCount = itemCaluclator($scope.list);
       //  console.log(itemCount);
        if (itemCount>3) {
+         $scope.messageDivClass="messageDivSuccess";
+         $scope.textBoxClass="textBoxSuccess";
          $scope.message="Too Much!";
        }
        else if (itemCount==0){
+          $scope.messageDivClass="messageDivError";
+          $scope.textBoxClass="textBoxError";
          $scope.message="Enter the data first";
        }
        else{
+          $scope.messageDivClass="messageDivSuccess";
+          $scope.textBoxClass="textBoxSuccess";
          $scope.message="Enjoy!"
        }
      };

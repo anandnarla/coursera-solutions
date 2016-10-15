@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Lunch Checker</title>
+    <link rel="stylesheet" href="style.css"></style>
     <script src="angular.min.js"></script>
     <script src="app.js"></script>
   </head>
@@ -10,10 +11,10 @@
     <h1>Lunch checker</h1>
     <div ng-controller="LunchCheckController">
       <div>
-        <input type="text" ng-model="list">
+        <input type="text" ng-class="textBoxClass" ng-model="list">
         <button ng-click="checkTheLunch()">Check If Too Much</button>
       </div>
-      <div>
+      <div ng-class="messageDivClass">
         {{message}}
       </div>
     </div>

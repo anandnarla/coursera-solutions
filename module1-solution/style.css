@@ -1,0 +1,12 @@
+.messageDivError{
+  color: Red
+}
+.messageDivSuccess{
+  color: Green
+}
+.textBoxSuccess{
+  border-color: Green
+}
+.textBoxError{
+  border-color: Red
+}

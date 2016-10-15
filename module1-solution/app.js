@@ -20,7 +20,7 @@
        else if (itemCount==0){
           $scope.messageDivClass="messageDivError";
           $scope.textBoxClass="textBoxError";
-         $scope.message="Enter the data first";
+         $scope.message="Please enter data first";
        }
        else{
           $scope.messageDivClass="messageDivSuccess";

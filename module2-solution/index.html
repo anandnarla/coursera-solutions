@@ -15,8 +15,10 @@
         Everything is bought!
       </div>
       <ol>
-        <li ng-repeat="item in toBuy.toBuyShoppingList">Buy {{item.quantity}} of
-          {{item.name}} <button class="btn btn-default" ng-click="toBuy.bought($index)">Bought</button></li>
+        <li ng-repeat="item in toBuy.toBuyShoppingList">
+          Buy {{item.quantity}} of {{item.name}}
+          <button class="btn btn-default" ng-click="toBuy.bought($index)">Bought</button>
+        </li>
       </ol>
     </div>
     <div class="col-sm-6" ng-controller="AlreadyBoughtController as bought">

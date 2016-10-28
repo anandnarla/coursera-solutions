@@ -3,18 +3,20 @@
   <head>
     <meta charset="utf-8">
     <title>Narrow It Down App</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
     <script src="angular.min.js"></script>
     <script src="app.js"></script>
   </head>
   <body ng-app="NarrowItDownApp">
-    <div ng-controller="NarrowItDownController as ctrl">
-      <h1>Narrow It Down App</h1>
+    <div class="container" ng-controller="NarrowItDownController as ctrl">
+      <div class="page-header">
+        <h1>Narrow It Down App</h1>
+      </div>
       <input type="text" ng-model="ctrl.searchQuery" placeholder="Search Query"></input>
       <button ng-click="ctrl.search()">Narrow It Down For Me!</button>
-      <!-- <ul>
-        <li ng-repeat="item in ctrl.menuItems">{{item.description}}</li>
-      </ul> -->
-      <found-items found-list="ctrl.menuItems"></found-items>
+      <found-items ng-if="ctrl.menuItems.length" found-list="ctrl.menuItems" on-remove="ctrl.remove(index)"></found-items>
+      <div class="text-danger text-center" style="font-size:20px;padding:15px" ng-if="ctrl.nothingFound"><strong>Nothing Found!!!</strong></div>
+      <!-- <div class="panel-footer">&copy;Anand Narla<div> -->
     </div>
   </body>
 </html>

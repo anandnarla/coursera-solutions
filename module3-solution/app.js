@@ -11,7 +11,7 @@ angular.module('NarrowItDownApp' , [])
 function FoundItemDirective() {
   var ddo={
     scope:{
-      found:'=foundList',
+      found:'<foundList',
       onRemove:'&'
     },
     controller:FoundItemsController,

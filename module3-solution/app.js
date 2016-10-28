@@ -11,7 +11,8 @@ angular.module('NarrowItDownApp' , [])
 function FoundItemDirective() {
   var ddo={
     scope:{
-      found:'=foundList'
+      found:'=foundList',
+      onRemove:'&'
     },
     controller:FoundItemsController,
     controllerAs:'items',
@@ -31,29 +32,52 @@ function NarrowItDownController(MenuSearchService) {
   var ctrl=this;
   ctrl.searchQuery="";
   ctrl.search=function () {
-  MenuSearchService.getMatchedMenuItems(ctrl.searchQuery).then(function(result){
-    // console.log(result);
-    ctrl.menuItems=result;
-    console.log(ctrl.menuItems);
-  });
+    ctrl.nothingFound=false;
+    if(ctrl.searchQuery===""){
+      ctrl.nothingFound=true;
+    }
+    else {
+      MenuSearchService.getMatchedMenuItems(ctrl.searchQuery).then(function(result){
+        // console.log(result);
+        ctrl.menuItems=result;
+        if(ctrl.menuItems.length===0){
+          ctrl.nothingFound=true;
+        }
+        // console.log(ctrl.menuItems);
+      });
+    }
+  };
+  ctrl.remove=function (itemIndex) {
+    // console.log('removing');
+    // console.log(ctrl.menuItems.length);
+    // console.log(ctrl.menuItems);
+    MenuSearchService.removeSelectedItem(itemIndex);
   };
 }
 
 MenuSearchService.$inject=['$http', 'ApiBasePath'];
 function MenuSearchService($http, ApiBasePath) {
   var service=this;
+  service.foundItems=[];
+
+
   service.getMatchedMenuItems=function(searchString){
-    var foundItems=[];
     return $http({ method: "GET", url: (ApiBasePath + "/menu_items.json")}).then(function(response){
       var menuItems=response.data;
+      service.foundItems=[];
       for (var i = 0; i < menuItems.menu_items.length; i++) {
-        if (menuItems.menu_items[i].description.indexOf(searchString) !== -1) {
-          foundItems.push(menuItems.menu_items[i])
+        if (menuItems.menu_items[i].description.toLowerCase().indexOf(searchString.toLowerCase()) !== -1) {
+          service.foundItems.push(menuItems.menu_items[i])
         }
       }
-      console.log(foundItems);
-      return foundItems;
+      // console.log(service.foundItems);
+      return service.foundItems;
     });
+  };
+
+  service.removeSelectedItem=function(itemIndex) {
+    service.foundItems.splice(itemIndex,1);
+    // console.log('on removeSelectedItem service');
   };
 }
 

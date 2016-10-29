@@ -35,6 +35,7 @@ function NarrowItDownController(MenuSearchService) {
     ctrl.nothingFound=false;
     if(ctrl.searchQuery===""){
       ctrl.nothingFound=true;
+      ctrl.menuItems=[];
     }
     else {
       MenuSearchService.getMatchedMenuItems(ctrl.searchQuery).then(function(result){
@@ -52,6 +53,9 @@ function NarrowItDownController(MenuSearchService) {
     // console.log(ctrl.menuItems.length);
     // console.log(ctrl.menuItems);
     MenuSearchService.removeSelectedItem(itemIndex);
+    if(ctrl.menuItems.length===0){
+          ctrl.nothingFound=true;
+    }
   };
 }
 

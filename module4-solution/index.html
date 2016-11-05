@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Menu Search Application</title>
+    <link rel="stylesheet" href="lib/bootstrap.min.css"/>
+    <link rel="stylesheet" href="lib/style.css">
+  </head>
+  <body ng-app="MenuApp">
+    <div class="text-center">
+      <h1>Menu Search Application</h1>
+
+      <!--  links to the different views-->
+      <a ui-sref="home">Home</a>
+      <a ui-sref="categories">Categories</a>
+    </div>
+
+    <!-- place holder for the ui-router's view -->
+    <loading-spinner></loading-spinner>
+    <ui-view></ui-view>
+
+    <!--  library java scripts -->
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-ui-router.min.js"></script>
+
+    <!--  Module inclusions -->
+    <script src="src/menuapp.module.js"></script>
+    <script src="src/data.module.js"></script>
+    <script src="src/spinner.module.js"></script>
+
+    <!-- component javascripts -->
+    <script src="src/categories.component.js"></script>
+    <script src="src/items.component.js"></script>
+    <script src="src/loadingspinner.component.js"></script>
+
+    <!-- data controllers -->
+    <script src="src/data.category.controller.js"></script>
+    <script src="src/data.item.controller.js"></script>
+
+    <!-- data service for getting the data -->
+    <script src="src/menudata.service.js"></script>
+
+    <!-- routes js -->
+    <script src="src/routes.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<div class="container">
+  <h1>SignUp for the News Letter</h1>
+  <fieldset>
+  <form name="signUpForm" novalidate>
+    <input type="text" name="firstname" placeholder="First Name"
+    ng-model="signUpCtrl.user.firstname"
+    class="form-control"
+    required>
+    <span
+        ng-if="signUpForm.firstname.$error.required && signUpForm.firstname.$touched">
+        First Name is required
+    </span></br>
+    <input type="text" name="lastname" placeholder="Last Name"
+    ng-model="signUpCtrl.user.lastname"
+    class="form-control"
+    required>
+    <span
+        ng-if="signUpForm.lastname.$error.required && signUpForm.lastname.$touched">
+        Last Name is required
+    </span></br>
+    <input type="email" name="email" placeholder="Email"
+    ng-model="signUpCtrl.user.email"
+    class="form-control"
+    required>
+    <span
+        ng-if="signUpForm.email.$invalid && signUpForm.email.$touched">
+        Email must be a vaild email address: handle@domain format
+    </span></br>
+    <input type="text" name="phone" placeholder="Phone ###-###-####"
+    ng-model="signUpCtrl.user.phone"
+    pattern="(\d{3})-(\d{3})-(\d{4})"
+    class="form-control"
+    required>
+    <span
+        ng-if="signUpForm.phone.$invalid && signUpForm.phone.$touched">
+        Phone must be in the format ###-###-####.
+    </span></br>
+    <input type="text" name="favorite" placeholder="Favorite Menu"
+    ng-model="signUpCtrl.user.favorite"
+    class="form-control"
+    required>
+    <span
+        ng-if="signUpCtrl.shortNameExists">
+        Menu short name does not exists
+    </span></br>
+    <button
+      ng-disabled="signUpForm.$invalid"
+      class="btn-primary"
+      ng-click="signUpCtrl.submit()">Submit</button>
+  </form>
+  <span ng-if="signUpCtrl.saved">Your information has been saved</span>
+</fieldset>
+</div>

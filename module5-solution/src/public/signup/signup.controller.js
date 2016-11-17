@@ -14,7 +14,6 @@ function SignUpController(SignUpService) {
       signUpCtrl.saved=true;
     },
     function (error) {
-      SignUpService.user={};
       signUpCtrl.saved=false;
       signUpCtrl.shortNameExists=true;
     })

@@ -10,17 +10,29 @@ h1{
 section > div{
   border: 1px solid black;
   margin: 5px;
-  background-color: #e819da;
-  color: #ffffff;
+  background-color: #c0c4ae;
+  color: #292d16;
+  font-weight: 500;
 }
 .title {
     border: 1px solid black;
     padding: 10px;
     float: right;
-    background-color: #96cc59;
     color: #000000;
-    font-weight: bold;
+    font-weight: bolder;
 }
+#title1{
+  background-color: #00f200;
+}
+
+#title2{
+  background-color: #d1f442;
+}
+
+#title3{
+  background-color: #a9bf54;
+}
+
 .content{
   clear: right;
   padding: 10px;
